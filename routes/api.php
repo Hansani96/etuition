@@ -19,6 +19,9 @@ Route::post('/user/register', [UserAccount::class, 'store']);
 Route::get('/email/verify', [VerifyUserEmail::class, 'EmailVerifyNotice'])->name('verification.notice');
 Route::get('/email/verify/{id}/{hash}', [VerifyUserEmail::class, 'EmailVerify'])->name('verification.verify');
 Route::post('/user/login', [UserAccount::class, 'login']);
+Route::post('/user/logout', [UserAccount::class, 'logout'])->middleware('auth:sanctum');
+Route::post('/forgot-password', [ForgotPasswordController::class, 'ForgotPassword'])->middleware('guest')->name('password.forgot');
+Route::post('/reset-password', [ForgotPasswordController::class, 'ForgotPasswordReset'])->middleware('guest')->name('password.reset');
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

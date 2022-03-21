@@ -96,4 +96,18 @@ class UserAccount extends Controller
         return response()->json($response);
 
     }
+
+     // ********************* User Account - Logout Function ******************* //
+
+     public function logout(Request $request) {
+
+        // $request->user()->currentAccessToken()->delete();
+        $request->user()->tokens()->delete();
+
+        $response['status'] = 1;
+        $response['message'] = 'Logout Successful!';
+
+        return response()->json($response);
+
+    }
 }
