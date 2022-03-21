@@ -15,7 +15,9 @@ use App\Http\Controllers\Auth\UserAccount;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::resource('/user/register', UserAccount::class);
+Route::post('/user/register', [UserAccount::class, 'store']);
+Route::get('/email/verify', [VerifyUserEmail::class, 'EmailVerifyNotice'])->name('verification.notice');
+Route::get('/email/verify/{id}/{hash}', [VerifyUserEmail::class, 'EmailVerify'])->name('verification.verify');
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

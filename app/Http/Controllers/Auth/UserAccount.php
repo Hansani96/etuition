@@ -10,12 +10,13 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 class UserAccount extends Controller
 {
     /*User Register Function*/
-    public function store(){
+    public function store(Request $request){
 
-        try{
+       // try{
 
             $user = User::create([
                 'firstname' => $request->firstname,
@@ -30,13 +31,13 @@ class UserAccount extends Controller
                 'type' => 0,
             ]);
 
-        }catch (\Exception $e) {
-            $response['status'] = 0;
-            $response['error'] = $e;
-            $response['message'] = 'Email has already been taken!';
+        // }catch (\Exception $e) {
+        //     $response['status'] = 0;
+        //     $response['error'] = $e;
+        //     $response['message'] = 'Email has already been taken!';
 
-            return response()->json($response);
-        }
+        //     return response()->json($response);
+        // }
 
         event(new Registered($user));
 
