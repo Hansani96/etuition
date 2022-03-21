@@ -18,6 +18,7 @@ use App\Http\Controllers\Auth\UserAccount;
 Route::post('/user/register', [UserAccount::class, 'store']);
 Route::get('/email/verify', [VerifyUserEmail::class, 'EmailVerifyNotice'])->name('verification.notice');
 Route::get('/email/verify/{id}/{hash}', [VerifyUserEmail::class, 'EmailVerify'])->name('verification.verify');
+Route::post('/user/login', [UserAccount::class, 'login']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
