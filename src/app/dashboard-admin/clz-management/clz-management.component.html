@@ -1,0 +1,162 @@
+<div class="userdashboard--contain">
+  <div class="col-12 col-md right" style="background-color: white;">
+    <div class="container-fluid">
+      <div class="file__upload__form">
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="breadcrumbs">
+              <div class="class--active">Add New Class </div>
+
+              <div class="click--link class--active"><a [routerLink]="['view-all-clz']">View All Class</a></div>
+              <div class="click--link class--active"><a [routerLink]="['view-un-publish-all-clz']">View Unpublish Class</a></div>
+           </div>
+          </div>
+        </div>
+        <form action=""   [formGroup]="clzsform"      (ngSubmit)="submitMaterials()">
+          <div *ngIf="upalod_status_message.status=='1'; else elseBlock">
+            <li class=" lstyle" style="color:green" role="alert">{{ upalod_status_message.message }}</li>
+          </div>
+          <ng-template #elseBlock><li class=" lstyle" style="color:green" role="alert">{{ upalod_status_message.message }}</li> </ng-template>
+
+          <li class=" lstyle" style="color:green" role="alert">{{ uplaod_pro }}</li>
+
+          <div class="row">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+              <div class="upload--file--text">Upload Class Banner</div>
+              <li class=" lstyle" style="color:red" role="alert">{{ file_errors}}</li>
+              <div class="upload--icon--text">
+                <div class="upload--icon"><img src="./styles/images/Group 194.png" alt=""></div>
+                <div class="drag--and--drop"><input type="file" class="form-control-file "  formControlName="banner" (change)="onfileSelected($event)" id="inputFile" accept="image/*"  data-title="Select File" accept=".jpg,.jpeg">{{ selectedFileName }}
+
+                </div>
+
+              </div>
+            </div>
+           <span class="text-mute" *ngIf="!clzsform.controls['banner'].valid && clzsform.controls['banner']?.touched"> Please select a Banner</span>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6" >
+              <div class="form-row">
+                <div class="col-12">
+                  <div class="form-group">
+                    <label for="fname">Class Name</label>
+                    <input type="text" class="form-control input--text--color" id="fname" formControlName="clz_name" required>
+                    <span class="text-mute" *ngIf="!clzsform.controls['clz_name'].valid && clzsform.controls['clz_name']?.touched">Class Name Required</span>
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-12">
+                  <div class="form-group">
+                    <label for="fname">Teacher Name</label>
+                    <select formControlName="user_id" id="cat" class="form-control input--text--color">
+                      <option *ngFor="let teachers of teachers.data" [value]="teachers.id">{{ teachers.firstname | titlecase }} {{ teachers.lastname }} ( {{ teachers.phone }})</option>
+                    </select>
+                    <span class="text-mute" *ngIf="!clzsform.controls['user_id'].valid && clzsform.controls['user_id']?.touched"> Please select a Teacher </span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="col-12">
+                  <div class="form-group">
+                    <label for="fname">Year</label>
+                    <input type="text" class="form-control input--text--color" id="fname" formControlName="year" required>
+                    <span class="text-mute" *ngIf="!clzsform.controls['year'].valid && clzsform.controls['year']?.touched">Year Required</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="col-12">
+                  <div class="form-group">
+                    <label for="fname">Grade</label>
+                    <select formControlName="grade" id="cat" class="form-control input--text--color">
+                      <option value="12">Grade 12</option>
+                      <option value="13">Grade 13</option>
+                    </select>
+                    <span class="text-mute" *ngIf="!clzsform.controls['grade'].valid && clzsform.controls['grade']?.touched"> Please select a Grade </span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="col-12">
+                  <div class="form-group">
+                    <label for="fname">Subject</label>
+                    <select formControlName="subject" id="cat" class="form-control input--text--color">
+                      <option value="1">Sinhala</option>
+                      <option value="2">Buddhist Civilization</option>
+                      <option value="3">Economics</option>
+                      <option value="4">Dance</option>
+                      <option value="5">English</option>
+                      <option value="6">Communication & Media Studies</option>
+                      <option value="7">Geography</option>
+                      <option value="8">Logic and Scientific Method</option>
+                      <option value="9">Music</option>
+                      <option value="10">Tamil</option>
+                      <option value="11">IT</option>
+                      <option value="12">Mathematics</option>
+                      <option value="13">Physics</option>
+                      <option value="14">Chemistry</option>
+                      <option value="15">Biology</option>
+                      <option value="16">Agricultural Science</option>
+                      <option value="17">Business Statistics</option>
+                      <option value="18">Accounting</option>
+                      <option value="19">Engineering Technology</option>
+                      <option value="20">Bio-system Technology</option>
+                      <option value="21">Science for Technology</option>
+                      <option value="22">Political Science</option>
+                    </select>
+                    <span class="text-mute" *ngIf="!clzsform.controls['subject'].valid && clzsform.controls['subject']?.touched"> Please select a Subject </span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="col-12">
+                  <div class="form-group">
+                    <label for="fname">Fee(LKR)</label>
+                    <input type="text" class="form-control input--text--color" id="fname" formControlName="fee" required>
+                    <span class="text-mute" *ngIf="!clzsform.controls['fee'].valid && clzsform.controls['fee']?.touched">Fee Required</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="col-12 ">
+                  <div class="form-group">
+                    <label for="fname">Address</label>
+
+                    <textarea name="" class="form-control input--text--color " id="" cols="30" rows="4" placeholder="Enter your news Address here" formControlName="address" name="message"></textarea>
+                    <span class="text-mute" *ngIf="!clzsform.controls['address'].valid && clzsform.controls['address']?.touched"> Please enter Address</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="col-12 ">
+                  <div class="form-group">
+                    <label for="fname">Description</label>
+
+                    <textarea name="" class="form-control input--text--color " id="" cols="30" rows="4" placeholder="Enter your news description here" formControlName="des" name="message"></textarea>
+                    <span class="text-mute" *ngIf="!clzsform.controls['des'].valid && clzsform.controls['des']?.touched"> Please enter Description</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-12 col-lg-12 col-sm-12 ">
+                <div class="row justify-content-end">
+                  <div *ngIf="disable_file_uplaod_button">
+                    <div class="upload--button" >
+                      <button type="submit" class="btn btn-default" [disabled]="!clzsform.valid">Add Class</button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

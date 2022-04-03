@@ -1,0 +1,144 @@
+<div class="middle container-fluid">
+  <div class="row middle--first">
+    <div class="col-4 col-md-2 col-sm-4 button--column">
+      <button class="btn dropdown-toggle button--all" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" hidden>
+        All
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" hidden>
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+      </div>
+    </div>
+    <div class="col-8 col-md-6 col-sm-8 search--column" hidden>
+      <div class="search--bar">
+        <form action="/action_page.php">
+          <input class="form-control" type="text" placeholder="Search your videos..."><span class="fas fa-search search"></span>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="row"  style="margin-top: 2%;">
+    <div class="col-12 col-md-8 col-sm-12">
+      <div class="row">
+        <div class="col-6 col-md-6 col-sm-6 total--column">
+          <div class="total__number">
+            <div class="total__number__header">Total number of Users :</div>
+            <div class="total__number__count">{{ count }}</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-6 col-sm-6 video--column">
+          <div class="edit__video">
+            <div class="edit__video__header">
+              <div>Edit  content </div>
+              <div><i class="fas fa-tools"></i></div>
+            </div>
+            <div class="button">
+              <a href="/administration/dashboard/clz-management/view-all-clz"><button>Edit class <i class="fas fa-angle-double-right"></i></button></a>
+            </div>
+            <div class="button">
+              <a href="administration/dashboard/news-management/view-all-news"><button>Edit News <i class="fas fa-angle-double-right"></i></button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-12 recent--upload">
+          <div class="recently__uploaded__videos">
+            <div class="recently__uploaded__videos__header">
+              <div class="recently__uploaded__videos__header__name">
+                Recently Added News
+              </div>
+              <div class="recently__uploaded__videos__header__icon">
+                <i class="fas fa-ellipsis-h"></i>
+              </div>
+            </div>
+            <div class="recently__uploaded__videos__body">
+              <table class="col-12 col-md-12">
+                <tr class="table--header">
+                  <td>Head Line</td>
+                  <td>Category</td>
+                  <td>Status</td>
+                  <td>Publish Date</td>
+                </tr>
+                <tr *ngFor ="let news of latest_news.data">
+                  <td>{{ news.head_line }}</td>
+                  <ng-container *ngIf="news.news_cat === '1';else second">
+                    <td>Educational Administration</td>
+                  </ng-container>
+                  <ng-template #second>
+                    <ng-container *ngIf="news.news_cat === '2';else fourth ">
+                      <td>Educational Policy</td>
+                    </ng-container>
+                  </ng-template>
+                  <ng-template #fourth>
+                    <ng-container *ngIf="news.news_cat === '3';else five ">
+                      <td>Educational Research</td>
+                    </ng-container>
+                  </ng-template>
+                  <ng-template #five>
+                    <ng-container *ngIf="news.news_cat === '4';else six ">
+                      <td>Educational Exams</td>
+                    </ng-container>
+                  </ng-template>
+                  <ng-template #six>
+                    <ng-container *ngIf="news.news_cat === '5';else seven ">
+                      <td>Educational Events</td>
+                    </ng-container>
+                  </ng-template>
+                  <ng-template #seven>
+                    <ng-container *ngIf="news.news_cat === '6';else ehight ">
+                      <td>School Events</td>
+                    </ng-container>
+                  </ng-template>
+                  <ng-template #ehight>
+                    <ng-container *ngIf="news.news_cat === '7';">
+                      <td>Other</td>
+                    </ng-container>
+                  </ng-template>
+                  <ng-container *ngIf="news.is_publish === 1;else elseblock">
+                    <td>Publish</td>
+                  </ng-container>
+                  <ng-template #elseblock>
+                    <ng-container *ngIf="news.is_publish === 0;">
+                      <td>UnPublish</td>
+                    </ng-container>
+                  </ng-template>
+                  <td >{{ news.created_at| date:'yyyy-MM-dd' }}</td>
+                </tr>
+
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-4 col-sm-12">
+      <div class="recently__uploaded__documents">
+        <div class="col-md recently__uploaded__documents__header">
+          <div class="recently__uploaded__documents__header__name">
+            Recently Added class Advertisement
+          </div>
+        </div>
+        <br>
+
+        <div class="recently__uploaded__documents__card">
+          <div c>
+            <div class="recently__uploaded__documents__card__item" *ngFor ="let docs of latest_docs.data">
+              <div class="recently__uploaded__documents__card__item__heading">
+               <p>{{ docs.clz_name }}</p>
+                <div>{{ docs.created_at| date:'yyyy-MM-dd' }}</div>
+              </div>
+             
+            
+            </div>
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

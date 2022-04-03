@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+</head>
+  <body >
+    <app-navigation-bar></app-navigation-bar>
+    <div class="page-container">
+      <div class="register">
+
+        <div class="container register--contain p-0">
+          <!--image-->
+          <div class="col-12 col-md-6 d-none d-sm-none d-md-block">
+            <img src="../../../assets/img/sin.jpeg" class="w-100 h-100" alt="register">
+          </div>
+
+            <!--registration form-->
+            <div class="form col-md-6">
+                <form [formGroup]="registerform" (ngSubmit)="CreateAccount()" class="p-5">
+                  <span class="form__header">REGISTER</span><br>
+                  <div class="row">
+                    <!--row 1-->
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="fname">First Name</label>
+                        <input formControlName="firstname" type="text" class="form-control" id="fname" placeholder="Kasun" [class.error-border]="registerform.get('firstname')?.invalid">
+                        <span *ngIf="registerform.get('firstname')?.invalid && registerform.get('firstname')?.errors && registerform.get('firstname')?.touched || registerform.get('firstname')?.dirty ">
+                          <small class="text-danger" *ngIf="registerform.get('firstname')?.hasError('required')">This field is required.</small>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="lname">Last Name</label>
+                        <input formControlName="lastname" type="text" class="form-control" id="lname" placeholder="Perera" [class.error-border]="registerform.get('lastname')?.invalid ">
+                        <span *ngIf="registerform.get('lastname')?.invalid && registerform.get('lastname')?.errors && registerform.get('lastname')?.touched || registerform.get('lastname')?.dirty ">
+                          <small class="text-danger" *ngIf="registerform.get('lastname')?.hasError('required')">This field is required.</small>
+                        </span>
+                      </div>
+                    </div>
+
+
+
+
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="wnumber">Whatsapp Number</label>
+                        <input formControlName="phone" type="tel" class="form-control" id="wnumber" placeholder="0771245789" [class.error-border]="registerform.get('phone')?.invalid">
+                        <span *ngIf="registerform.get('phone')?.invalid && registerform.get('phone')?.errors  && registerform.get('phone')?.touched || registerform.get('phone')?.dirty">
+                          <small class="text-danger" *ngIf="registerform.get('phone')?.hasError('required')">This field is required.</small>
+                          <small class="text-danger" *ngIf="registerform.get('phone')?.hasError('pattern')">Invalid mobile phone number.</small>
+                        </span>
+                    </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input formControlName="email" type="email" class="form-control" id="email" placeholder="kasun20@gmail.com" [class.error-border]="registerform.get('email')?.invalid">
+                        <span *ngIf="registerform.get('email')?.invalid && registerform.get('email')?.errors  && registerform.get('email')?.touched || registerform.get('email')?.dirty">
+                          <small class="text-danger" *ngIf="registerform.get('email')?.hasError('required')">This field is required.</small>
+                          <small class="text-danger" *ngIf="registerform.get('email')?.hasError('email')">Invalid email address.</small>
+                        </span>
+                    </div>
+                    </div>
+                    <!--row 5-->
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="pwd">Password <span class="tool" data-toggle="tooltip" data-placement="top" title="8 characters long, 1 uppercase & 1 lowercase character and 1 number"> ? </span> </label>
+                        <input formControlName="password" [type]="getPasswordType" [style.border]="BorderColour" class="form-control password" id="pwd" placeholder="Password" [class.error-border]="registerform.get('password')?.invalid">
+                        <span (click)="ChangeVisibility()">
+                          <span toggle="#password-field"  [ngClass]="eye_show"></span>
+                        </span>
+                        <span *ngIf="registerform.get('password')?.invalid && registerform.get('password')?.errors && registerform.get('password')?.touched || registerform.get('password')?.dirty">
+                          <small class="text-danger" *ngIf="registerform.get('password')?.hasError('required')">This field is required.</small>
+                          <small class="text-danger" *ngIf="registerform.get('password')?.hasError('pattern')">Enter a strong password.</small>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="cpwd">Confirm Password </label>
+                        <input formControlName="confirmPassword" [type]="getPasswordType_confirm" [style.border]="BorderColour" class="form-control password" id="repwd" placeholder="Confirm" [class.error-border]="registerform.get('confirmPassword')?.invalid">
+                        <span (click)="ChangeVisibilityConfirm()">
+                          <span toggle="#password-field"  [ngClass]="eye_show_confirm"></span>
+                        </span>
+
+                        <span *ngIf="f['confirmPassword'].errors && f['confirmPassword'].errors['confirmedValidator']">
+                          <small class="text-danger"> Password and Confirm Password not Match</small>
+                        </span>
+
+                    </div>
+                    </div>
+
+                    
+
+                    <div class="col-12 pt-5 d-flex justify-content-center">
+                      <button type="submit" class="btn btn-default" [disabled]="!registerform.valid"><i class="fas fa-spinner fa-pulse" [hidden]="LoadingStatus"></i> Register</button><br>
+                    </div>
+                  </div>
+
+                  </form>
+            </div>
+        </div>
+      </div>
+    </div>
+<app-footer></app-footer>

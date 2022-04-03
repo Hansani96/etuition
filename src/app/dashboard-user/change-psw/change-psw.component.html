@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>change password</title>
+</head>
+<body>
+    <div class="forget" >
+        <div class="container forget--contain">
+          <!--form-->
+          <div class="col-12 forget--form">
+            <form [formGroup]="pswfrm" (ngSubmit)="upDateSubmit()">
+                <span class="form__header mb-0" style="padding-bottom: 0;">Change Password</span>
+
+                    <div  *ngIf="update_password_res.success" >
+                    <li class="alert alert-success lstyle p-1" role="alert">{{ update_password_res.success }}</li>
+                    </div>
+                    <div  *ngIf="update_password_res.psw_error" >
+                    <li class="alert alert-danger lstyle p-1"  [hidden]="ChangeVisibility1" role="alert">{{ update_password_res.psw_error }}</li>
+                    </div>
+                    <div *ngFor ="let val_pass_error of update_password_res.error">
+                    <li class="alert alert-danger lstyle p-1" [hidden]="ChangeVisibility1" role="alert">{{ val_pass_error }}</li>
+                    </div>
+                <div class="form-group pb-0">
+                    <label for="newpass">Old Password</label>
+                    <input type="password" formControlName="oldpassword" class="form-control" [class.error-border]="submitted && pswfrm.get('oldpassword')?.invalid">
+                    <span class="w-100 text-left" *ngIf="submitted && pswfrm.get('oldpassword')?.invalid && pswfrm.get('oldpassword')?.errors">
+                      <small class="text-danger" *ngIf="pswfrm.get('oldpassword')?.hasError('required')">Old Password Required.</small>
+                    </span>
+                </div>
+                <div class="form-group pb-0">
+                    <label for="newpass">New Password</label>
+                    <input type="password" formControlName="password" class="form-control" [class.error-border]="submitted && pswfrm.get('password')?.invalid">
+                    <span class="w-100 text-left" *ngIf="submitted && pswfrm.get('password')?.invalid && pswfrm.get('password')?.errors">
+                      <small class="text-danger" *ngIf="pswfrm.get('password')?.hasError('required')">Enter a new password.</small>
+                      <small class="text-danger" *ngIf="pswfrm.get('password')?.hasError('pattern')">Password should be strong.</small>
+                    </span>
+                </div>
+                <div class="form-group pb-0">
+                    <label for="confirmpass">Confirm New Password</label>
+                    <input type="password" formControlName="password_confirmation" class="form-control" [class.error-border]="submitted && pswfrm.get('password_confirmation')?.invalid">
+                    <span class="w-100 text-left" *ngIf="submitted && pswfrm.get('password_confirmation')?.invalid && pswfrm.get('password_confirmation')?.errors">
+                      <small class="text-danger" *ngIf="pswfrm.get('password_confirmation')?.hasError('required')">This field is required.</small>
+                    </span>
+                </div>
+                <div class="buttons">
+                    <button type="submit" [disabled]="LockSubmit" class="btn btn-default">Update</button>
+                </div>
+            </form>
+           </div>
+        </div>
+    </div>
+</body>
+<script>
+    //check whether two passwords are matching
+    function onChange() {
+      const password = document.querySelector('input[name=password]');
+      const confirm = document.querySelector('input[name=confirm]');
+      if (confirm.value === password.value) {
+        confirm.setCustomValidity('');
+      } else {
+        confirm.setCustomValidity('Passwords do not match');
+      }
+    };
+
+    //password show and hide
+    var password=document.querySelector('.password');
+    var conpassword=document.querySelector('.conpassword');
+    var show=document.querySelector('.show');
+    var hide=document.querySelector('.hide');
+    var show2=document.querySelector('.show2');
+    var hide2=document.querySelector('.hide2');
+
+      show.onclick=function(){
+      password.setAttribute("type", "text");
+      show.style.display="none";
+      hide.style.display="block";
+      }
+
+      hide.onclick=function(){
+      password.setAttribute("type", "password");
+      show.style.display="block";
+      hide.style.display="none";
+      }
+
+      show2.onclick=function(){
+      conpassword.setAttribute("type", "text");
+      show2.style.display="none";
+      hide2.style.display="block";
+      }
+
+      hide2.onclick=function(){
+      conpassword.setAttribute("type", "password");
+      show2.style.display="block";
+      hide2.style.display="none";
+      }
+  //alert
+  function sweetAlert(){
+    swal({
+        title: "Successfully Reset the Password!",
+        text: "WELCOME TO THE DEROCHEM!",
+        icon: "success",
+        button: "Ok",
+        timer: 3000,
+      }).then(function() {
+          window.location = "login.html";
+      });
+  }
+</script>
+</html>

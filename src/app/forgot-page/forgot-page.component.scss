@@ -1,0 +1,220 @@
+.forget {
+  padding-top: 50px;
+  padding-bottom: 50px;
+    -ms-flex-line-pack: center;
+        align-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  
+  .forget--contain {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+        justify-content: center;
+-webkit-box-align: center;
+    -ms-flex-align: center;
+        align-items: center;
+-webkit-box-orient: horizontal;
+-webkit-box-direction: normal;
+    -ms-flex-direction: row;
+        flex-direction: row;
+-ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+box-shadow: 3px 6px 50px rgba(0, 0, 0, 0.09);
+border-radius: 5px;
+height: 100%;
+display: -webkit-box;
+display: -ms-flexbox;
+display: flex;
+background-size: cover;
+font-family: Poppins;
+padding: 0;
+background-repeat: no-repeat;
+background-position: center;
+margin: 50px 300px;
+padding: 50px;
+  }
+  
+  .forget--contain .forget--form {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    text-align: center;
+    border-radius: 40px;
+  }
+  
+  .forget--contain .forget--form form {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin: 0;
+  }
+  
+  .forget--contain .forget--form form .form__header {
+    color: #FDB415;
+    font-size: 2.5rem;
+    font-weight: bold;
+    padding-bottom: 50%;
+  }
+  
+  .forget--contain .forget--form form .form-group {
+    text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  
+  .forget--contain .forget--form form .form-group label {
+    font-size: 0.875rem;
+    line-height: 21px;
+    -ms-flex-item-align: start;
+        -ms-grid-row-align: start;
+        align-self: start;
+  }
+  
+  .forget--contain .forget--form form .form-group input {
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.53);
+    color: #666666;
+    background-color: transparent;
+    width: 400px;
+    text-align: left;
+  }
+
+  .forget--contain .forget--form form .form-group .form-control.ng-touched.ng-valid {
+    border:1px solid green;
+  }
+  
+  .forget--contain .forget--form form .form-group .error-border {
+    border:1px solid #BA3633;
+  }
+
+  .forget--contain .forget--form form .form-group #error {
+    color: #BA3633;
+    text-align: center;
+    font-size: 0.875rem;
+    width: 300px;
+    padding-top: 10px;
+  }
+  
+  .forget--contain .forget--form form .buttons {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+  
+  .forget--contain .forget--form form .buttons button {
+    border-radius: 5px;
+    color: white;
+    padding: 7px 30px 7px 30px;
+    background-color: #FDB415;
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: center;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .forget--contain .forget--form form .buttons button:hover {
+    background-color: #FDB415;
+  }
+  
+  .forget--contain .forget--form form .buttons .cancel {
+    border-radius: 5px;
+    color: white;
+    padding: 7px 20px 7px 20px;
+    background-color: #414144;
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: center;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .forget--contain .forget--form form .buttons .cancel:hover {
+    background-color: #FDB415;
+  }
+  
+  @media screen and (max-width: 1199px) {
+    html, body {
+      font-size: 14px;
+    }
+    .forget--contain{
+      margin: 50px 200px;
+    }
+  }
+  
+  @media screen and (max-width: 1000px) {
+    .forget--contain{
+      margin: 50px 150px;
+    }
+    .forget--contain .forget--form form .form-group {
+      padding-bottom: 5%;
+    }
+    .forget--contain .forget--form form .form-group input {
+      border-radius: 4px;
+      border: 1px solid rgba(0, 0, 0, 0.53);
+      color: #666666;
+      background-color: transparent;
+      height: 50%;
+      width: 300px;
+    }
+  }
+  
+  @media screen and (max-width: 767px) {
+    .forget--contain{
+      margin: 100px;
+    }
+  }
+  @media screen and (max-width: 578px){
+    .forget--contain{
+      margin: 50px;
+    }
+  }
+  
+  @media screen and (max-width: 440px) {
+    .forget--contain .forget--form form .form-group {
+      padding-bottom: 5%;
+    }
+    .forget--contain{
+      margin: 20px;
+    }
+    .forget--contain .forget--form form .form-group input {
+      border-radius: 4px;
+      border: 1px solid rgba(0, 0, 0, 0.53);
+      color: #666666;
+      background-color: transparent;
+      width: 200px;
+    }
+  }

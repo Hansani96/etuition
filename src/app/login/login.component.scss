@@ -1,0 +1,36 @@
+.login--contain {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  box-shadow: 3px 6px 50px rgba(0, 0, 0, 0.09);
+  border-radius: 5px;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-size: cover;
+  font-family: Poppins;
+  padding: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+.login--contain .log--form form .form-group .form-control.ng-touched.ng-valid {
+  border:1px solid green;
+}
+
+.login--contain .log--form form .form-group .error-border {
+  border:1px solid #BA3633;
+}
+
+

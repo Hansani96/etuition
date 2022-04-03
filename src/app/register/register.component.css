@@ -1,0 +1,8 @@
+.register--contain .form form .form-row .form-group .form-control.ng-touched.ng-valid {
+  border: 1px solid #008800;
+}
+
+.register--contain .form form .form-row .form-group .error-border {
+  border: 1px solid #BA3633;
+}
+/*# sourceMappingURL=register.component.css.map */

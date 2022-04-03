@@ -1,0 +1,31 @@
+<app-navigation-bar></app-navigation-bar>
+<div class="page-container">
+    <div class="reset">                                             
+        <div class="container reset--contain">          
+            <!--form-->
+            <div class="col-12 reset--form">
+                <form (ngSubmit)="ResetPassword()" [formGroup]="resetform">
+                    <span class="form__header">RESET PASSWORD</span><br><br>                   
+                    <div class="form-group">
+                        <input type="password" formControlName="password" class="form-control password" id="pwd" [(ngModel)]="user.password" placeholder="Password" [class.error-border]="submitted && resetform.get('password')?.invalid" [type]="getPasswordType">
+                        <span (click)="ChangeVisibility()" toggle="#password-field" [ngClass]="eye_show"></span>
+                        <span class="w-100 text-left" *ngIf="submitted && resetform.get('password')?.invalid && resetform.get('password')?.errors">
+                            <small class="text-danger" *ngIf="resetform.get('password')?.hasError('required')">Enter a new password.</small>
+                            <small class="text-danger" *ngIf="resetform.get('password')?.hasError('pattern')">Password should be strong.</small>
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" formControlName="confirmPassword" name="confirmPassword" class="form-control conpassword" id="cpwd" placeholder="Confirm Password" [class.error-border]="submitted && resetform.get('confirmPassword')?.invalid" [style.border]="BorderColour" [(ngModel)]="user.confirmations" [type]="getPasswordType_confirm">
+                        <span (click)="ChangeVisibilityConfirm()" toggle="#password-field" [ngClass]="eye_show_confirm"></span>
+                        <span class="w-100 text-left" *ngIf="submitted && resetform.get('confirmPassword')?.invalid && resetform.get('confirmPassword')?.errors">
+                            <small class="text-danger" *ngIf="resetform.get('confirmPassword')?.hasError('required')">This field is required.</small>
+                        </span>
+                    </div>
+                    <span id="error" [hidden]="show_status">{{ ErrorMessage }}</span><br>
+                    <button type="submit" class="btn btn-default" [disabled]="LockSubmit"><i class="fas fa-spinner fa-pulse" [hidden]="LoadingStatus"></i> Done</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

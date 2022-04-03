@@ -1,0 +1,62 @@
+<div class="container home--contain p-0">
+  <nav class="navbar navbar-expand-md container__header  fixed-top p-0 bg-white ">
+    <div class="container p-0 ">
+      <div class="justify-content-between d-flex flex-row col-12 align-items-center">
+        <div class="p-0"><a class="navbar-brand" href=""><img src="../../assets/img/logo.png" alt="logo image"></a></div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+        </button>
+      <!-- <div >
+          <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
+            <div class="form-group mb-2">
+                <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-search"></i></span>
+                    </div>
+                    <input class="form-control" placeholder="Search" type="text" >
+                </div>
+            </div>
+        </form>
+        </div>-->
+        <div>
+          <div class="collapse navbar-collapse " id="navbarSupportedContent">
+
+            <div>
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/class-adds">Class</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/about-us">About Us</a>
+                </li>
+
+              </ul>
+            </div>
+
+            <div class="container__header__buttons">
+              <ng-container *ngIf="IsLoggedIn; else LoggedOut">
+                <a  (click)="LogoutUser()" role="button">Logout</a>
+              </ng-container>
+              <ng-template #LoggedOut>
+                <a [routerLink]="['/login']"><button id="login">Log In</button></a>
+              </ng-template>
+              <ng-container *ngIf="IsLoggedIn; else NotLoggedIn">
+                <button class="btn_1 m-2 ml-lg-4" (click)="GoHome()">Go Dashboard</button>
+              </ng-container>
+              <ng-template #NotLoggedIn>
+                <a [routerLink]="['/register']"><button id="register">Sign Up</button></a>
+              </ng-template>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </nav>
+</div>
+

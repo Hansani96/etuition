@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>dashboard new</title>
+</head>
+<body>
+<div id="mySidebar" class="sidebar" [style.display]="StyleDisplay" [style.width]="StyleWidth">
+  <!---->
+  <a class="closebtn" (click)="closeNav()"><i class="fas fa-times"></i></a>
+  <a [routerLink]="['home']"><i class="fas fa-home"></i> Home</a>
+  <a [routerLink]="['clz-management']"><i class="fa-solid fa-child"></i>Class Management</a>
+
+</div>
+<div class="userdashboard--contain">
+  <div class="col-12 col-md-1 container__side__nav__bar">
+    <button class="menubutton" (click)="openNav()"><i class="fas fa-bars"></i></button>
+    <div class="container__side__nav__bar__icons">
+
+      <div class="side--bar--icons" ><a [routerLink]="['home']" title="Home"><i class="fas fa-home"></i></a></div>
+      <div class="side--bar--icons" [routerLink]="['clz-management']"><a [routerLink]="['clz-management']" title="Class Management"><i class="fa-solid fa-child"></i></a></div>
+
+    </div>
+  </div>
+  <div class="col-12 col-md right">
+    <div class="col-12 col-md-12 container__top__bar">
+      <div class="container__top__bar__links">
+        <div class="menu"><button class="menubutton" (click)="openNav()"><i class="fas fa-bars"></i></button></div>
+        <div class="name--dashboard">{{ title }}</div>
+        <div class="container__top__bar__links__icons dashborad--links">
+
+
+
+          <div class="user--icon">
+            <a class="nav-link"  [routerLink]="['admin-profile']"><img src="{{ pro_img }}" alt="profile pic"  class="thumbnail"></a>
+          </div>
+          <div>
+            <button type="button"data-toggle="dropdown">
+              <div class="">
+                <a class="nav-link" style="font-size: 16px;" href="#">{{ c_user_d.firstname }} {{c_user_d.lastname  }}</a>
+              </div>
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item notification--header" [routerLink]="['profile']">Profile</a>
+              <a class="dropdown-item notification--header" [routerLink]="['change-psw']">Change Password</a>
+              <a class="dropdown-item notification--header" (click)="Logout()">Log out</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <router-outlet></router-outlet>
+  </div>
+</div>
+</body>
+</html>

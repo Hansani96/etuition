@@ -1,0 +1,47 @@
+<app-navigation-bar></app-navigation-bar>
+<div class="page-container">
+  <div class="login">
+    <div class="login-sign d-none d-sm-none d-md-block">
+
+    </div>
+    <div class="container login--contain">
+      <!--image-->
+      <div class="col-12 col-md-6 d-none d-sm-none d-md-block">
+        <img src="../../../assets/img/sin.jpeg" class="w-100 h-100" alt="log in">
+      </div>
+      <!--form-->
+      <div class="col-12 col-md-6 log--form">
+        <form [formGroup]="loginform" (ngSubmit)="LoginAccount()">
+          <span class="form__header">LOGIN</span><br><br>
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input formControlName="email" type="email" class="form-control" id="email" placeholder="Enter your email" [class.error-border]="submitted && loginform.get('email')?.invalid">
+            <span *ngIf="loginform.get('email')?.invalid && loginform.get('email')?.errors && loginform.get('email')?.touched || loginform.get('email')?.dirty">
+              <small class="text-danger" *ngIf="loginform.get('email')?.hasError('required')">Enter an email address.</small>
+              <small class="text-danger" *ngIf="loginform.get('email')?.hasError('email')">Invalid email address.</small>
+            </span>
+          </div>
+          <div class="form-group">
+            <label for="pwd">Password</label>
+            <div><input formControlName="password" [type]="getPasswordType" name="password" class="form-control password" id="pwd" placeholder="Enter your password" [class.error-border]="submitted && loginform.get('password')?.invalid">
+            <span (click)="ChangeVisibility()">
+              <span toggle="#password-field"  [ngClass]="eye_show"></span>
+            </span>
+            <span *ngIf="loginform.get('password')?.invalid && loginform.get('password')?.errors && loginform.get('password')?.touched || loginform.get('password')?.dirty">
+              <small class="text-danger" *ngIf="loginform.get('password')?.hasError('required')">Enter a password.</small>
+            </span><br>
+            <span class="forget"><a [routerLink]="['/forgot-password']">Forgot your password?</a></span>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-default" [disabled]="!loginform.valid"><i class="fas fa-spinner fa-pulse" [hidden]="LoadingStatus"></i> Login</button><br>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
+
+
+
+

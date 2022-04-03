@@ -1,0 +1,31 @@
+<app-navigation-bar></app-navigation-bar>
+<div class="page-container">
+    <div class="forget">                                             
+        <div class="forget--contain">          
+            <!--form-->
+            <div class="col-12 forget--form">
+                <form [formGroup]="forgetform" (ngSubmit)="ForgotPassword()">
+                    <span class="form__header">FORGOT PASSWORD</span><br><br>                   
+                    <div class="form-group" >
+                        <label for="email">E-mail</label>
+                        <input formControlName="email" type="email" class="form-control" id="email" placeholder="Email" [class.error-border]="submitted && forgetform.get('email')?.invalid">
+                        <span class="w-100 text-left" *ngIf="submitted && forgetform.get('email')?.invalid && forgetform.get('email')?.errors">
+                            <small class="text-danger" *ngIf="forgetform.get('email')?.hasError('required')">Enter an email address.</small>
+                            <small class="text-danger" *ngIf="forgetform.get('email')?.hasError('email')">Invalid email address.</small>
+                        </span>
+                        <span id="error" [hidden]="show_status">{{ ErrorMessage }}</span><br>
+                    </div>  
+                    <div class="buttons">
+                        <a [routerLink]="['/login']"><button type="submit" class="btn btn-default cancel">Cancel</button></a>               
+                        <button type="submit" class="btn btn-default" [disabled]="LockSubmit"><i class="fas fa-spinner fa-pulse" [hidden]="LoadingStatus"></i> Done</button>
+                    </div> 
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
+
+
+
+

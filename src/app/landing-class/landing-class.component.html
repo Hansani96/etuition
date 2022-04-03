@@ -1,0 +1,168 @@
+<div class="container home--contain">
+  <app-navigation-bar></app-navigation-bar>
+
+<div class="pt-5 mt-5">
+  <div class="row mt-5">
+    <div class="col-12 justify-content-end float-right">
+      <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
+        <div class="form-group mb-2">
+            <div class="input-group input-group-alternative">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-search"></i></span>
+                </div>
+                <input class="form-control" placeholder="search Class" name="searchClz" [(ngModel)]="searchClz" >
+            </div>
+        </div>
+    </form>
+    </div>
+    <div class="col-md-6" *ngFor="let clz of response.data |filter:searchClz | paginate: { itemsPerPage: 10, currentPage: p  };">
+      <div class="card mb-3 " >
+        <div class="row g-0 d-flex">
+          <div class="col-md-4">
+            <img src="{{ imgUrl }}/storage/clz/{{clz.banner  }}" class="w-100 h-100 img-fluid" alt="..." style="object-fit: cover;">
+
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{ clz.clz_name }}</h5>
+              <p class="card-text">Teacher:-{{ clz.teacher.firstname }} {{ clz.teacher.lastname }}</p>
+              <p class="card-text">Description:-{{ clz.des }}</p>
+              <p class="card-text">Address:-{{ clz.address }}</p>
+              <p class="card-text">Fee(LKR):-{{ clz.fee }}</p>
+              <ng-container *ngIf="clz.grade === '12';else second">
+                <p class="card-text">Grade 12</p>
+              </ng-container>
+              <ng-template #second>
+                <ng-container *ngIf="clz.grade === '13'; ">
+                  <p class="card-text">Grade 13</p>
+                </ng-container>
+              </ng-template>
+
+              <ng-container *ngIf="clz.subject === '1';else f1">
+                <p class="card-text">Sinhala</p>
+              </ng-container>
+
+              <ng-template #f1>
+                <ng-container *ngIf="clz.subject === '2'; else f2">
+                  <p class="card-text">Buddhist Civilization</p>
+                </ng-container>
+              </ng-template>
+
+              <ng-template #f2>
+                <ng-container *ngIf="clz.subject === '3'; else f3">
+                  <p class="card-text">Economics</p>
+                </ng-container>
+              </ng-template>
+              <ng-template #f3>
+                <ng-container *ngIf="clz.subject === '4'; else f4">
+                  <p class="card-text">Dance</p>
+                </ng-container>
+              </ng-template>
+              <ng-template #f4>
+                <ng-container *ngIf="clz.subject === '5'; else f5">
+                  <p class="card-text">English</p>
+                </ng-container>
+              </ng-template>
+              <ng-template #f5>
+                <ng-container *ngIf="clz.subject === '6'; else f6">
+                  <p class="card-text">Communication & Media Studies</p>
+                </ng-container>
+              </ng-template>
+              <ng-template #f6>
+                <ng-container *ngIf="clz.subject === '7'; else f7">
+                  <p class="card-text">Geography</p>
+                </ng-container>
+              </ng-template>
+              <ng-template #f7>
+                <ng-container *ngIf="clz.subject === '8'; else f8">
+                  <p class="card-text">Logic and Scientific Method</p>
+                </ng-container>
+              </ng-template>
+              <ng-template #f8>
+                <ng-container *ngIf="clz.subject === '9'; else f9">
+                  <p class="card-text">Music</p>
+                </ng-container>
+              </ng-template>
+              <ng-template #f9>
+                <ng-container *ngIf="clz.subject === '10'; else f10">
+                  <p class="card-text">Tamil</p>
+                </ng-container>
+              </ng-template>
+              <ng-template #f10>
+                <ng-container *ngIf="clz.subject === '11'; else f11">
+                  <p class="card-text">IT</p>
+                </ng-container>
+              </ng-template>
+              <ng-template #f11>
+                <ng-container *ngIf="clz.subject === '12'; else f12">
+                  <p class="card-text">Mathematics</p>
+                </ng-container>
+              </ng-template>
+              <ng-template #f12>
+                <ng-container *ngIf="clz.subject === '13'; else f13">
+                  <p class="card-text">Physics</p>
+                </ng-container>
+              </ng-template>
+              <ng-template #f13>
+                <ng-container *ngIf="clz.subject === '14'; else f14">
+                  <p class="card-text">Chemistry</p>
+                </ng-container>
+              </ng-template>
+              <ng-template #f14>
+                <ng-container *ngIf="clz.subject === '15'; else f15">
+                  <p class="card-text">Biology</p>
+                </ng-container>
+              </ng-template>
+              <ng-template #f15>
+                <ng-container *ngIf="clz.subject === '16'; else f16">
+                  <p class="card-text">Agricultural Science</p>
+                </ng-container>
+              </ng-template>
+              <ng-template #f16>
+              <ng-container *ngIf="clz.subject === '17'; else f17">
+                <p class="card-text">Business Statistics</p>
+                </ng-container>
+              </ng-template>
+              <ng-template #f17>
+                <ng-container *ngIf="clz.subject === '18'; else f18">
+                  <p class="card-text">Accounting</p>
+                  </ng-container>
+              </ng-template>
+              <ng-template #f18>
+                <ng-container *ngIf="clz.subject === '19'; else f19">
+                  <p class="card-text">Engineering Technology</p>
+                  </ng-container>
+              </ng-template>
+              <ng-template #f19>
+                <ng-container *ngIf="clz.subject === '20';">
+                  <p class="card-text">Bio-system Technology</p>
+                  </ng-container>
+              </ng-template>
+              <ng-template #f20>
+                <ng-container *ngIf="clz.subject === '21'; else f21">
+                  <p class="card-text">Science for Technology</p>
+                  </ng-container>
+              </ng-template>
+              <ng-template #f21>
+                <ng-container *ngIf="clz.subject === '22';">
+                  <p class="card-text">Political Science</p>
+                  </ng-container>
+              </ng-template>
+              <p class="card-text"><small class="text-muted">{{ clz.created_at | date:'yyyy-MM-dd' }}</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+  </div>
+  </div>
+
+  <pagination-controls class="justify-content-center d-flex py-20"  (pageChange)="p = $event"></pagination-controls>
+</div>
+
+<app-footer></app-footer>
+

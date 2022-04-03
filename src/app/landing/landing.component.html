@@ -1,0 +1,33 @@
+<div class="container home--contain">
+    <app-navigation-bar></app-navigation-bar>
+     <div class="row pt-5 mt-5">
+      <div class="col-md-8 border border-3">
+        <h2>News</h2>
+        <br>
+        <div *ngFor="let news of response.data | paginate: { itemsPerPage: 1, currentPage: p  }">
+          <h3 class="pb-5">{{ news.head_line }}</h3>
+            <img src="{{ imgUrl }}/storage/news/{{news.news_banner  }}" class="img-fluid">
+
+            <p class="pt-5">{{news.des}}</p>
+            <small class="float-right text-primary" >{{ news.created_at| date:'yyyy-MM-dd'  }}</small>
+        </div>
+        <pagination-controls class="justify-content-center d-flex" [autoHide] = "HideNavigation" (pageChange)="p = $event"></pagination-controls>
+      </div>
+      <div class="col-md-4 border border-3">
+        <h2>Adds</h2>
+       <div class="row py-2" *ngFor="let clz of clz_res.data ">
+         
+            <div class="col-md-7">
+                <img src="{{ imgUrl }}/storage/clz/{{clz.banner  }}" class="w-100 h-100 " style="object-fit: cover;">
+            </div>
+            <div class="col-md-5 pl-0">
+              <p class="card-text p-0 m-0">{{ clz.clz_name }}</p>
+              <p class="card-text  p-0 m-0">Fee(LKR):-{{ clz.fee }}</p>
+              <p class="card-text  p-0 m-0">Teacher:-{{ clz.teacher.firstname }} {{ clz.teacher.lastname }}</p>
+            </div>
+         
+       </div>
+      </div>
+     </div>
+    </div>
+<app-footer></app-footer>

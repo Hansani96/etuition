@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>admin profile management</title>
+</head>
+<body>
+
+    <div class="userdashboard--contain" style="height: 100%;">
+
+      <div class="col-12 col-md right" style="background-image: url('./styles/images/back.png');">
+            <div class="container-fluid">
+              <div class="row user__profile">
+                <div class="col-12">
+                  <div class="user__profile__form">
+                    <form [formGroup]="profileform">
+                      <div class="col-12 col-md-4 col-lg-4 col-sm-12 user__profile__img">
+                        <a><div class="user__profile__image">
+                          <img *ngIf="profileform.get('profile')?.value == null; else elseBlock" src="/assets/profile-page/profile icon.png" [style.border]="BorderColour" [title]="ErrorMessage"alt="edit icon">
+                          <ng-template #elseBlock>
+                            <img  src="{{ profileUrl }}/storage/profile/{{ profileform.get('profile')?.value }}" [style.border]="BorderColour" [title]="ErrorMessage"alt="edit icon">
+                          </ng-template>
+                          <input type="file" class="inputfile"  style="opacity: 0;">
+                          <div class="text--on--image">
+                            <label>
+                              <span>Edit Profile <i class="fas fa-pencil-alt"></i></span>
+                              <input type="file" name="Profile" (change)="fileEvent($event)" style="display: none">
+                            </label>
+                          </div>
+                        </div></a>
+                        <div class="user__name">{{ profileform.get('firstname')?.value }} {{ profileform.get('lastname')?.value }}</div>
+                          <div class="user__email">{{ profileform.get('email')?.value }}</div>
+                            <div class="change__password"><a href="/administration/dashboard/change-psw">Change Password</a></div>
+                          </div>
+                          <div class="col-12 col-md-8 col-lg-8 col-sm-12">
+                            <div class="form__right__side">
+                              <div class="user__form__header">Admin Profile Management</div>
+                              <div class="row">
+                                <div class="col-12 col-md-6">
+                                  <div class="form-group">
+                                    <label for="fname">First Name</label>
+                                    <input type="text" formControlName="firstname" class="form-control" id="fname" name="firstname" [class.error-border]="submitted && profileform.get('firstname')?.invalid">
+                                    <span *ngIf="submitted && profileform.get('firstname')?.invalid && profileform.get('firstname')?.errors">
+                                      <small class="text-danger" *ngIf="profileform.get('firstname')?.hasError('required')">This field is required.</small>
+                                    </span>
+                                  </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                  <div class="form-group">
+                                    <label for="lname">Last Name</label>
+                                    <input type="text" formControlName="lastname" class="form-control" id="lname" name="lastname" [class.error-border]="submitted && profileform.get('lastname')?.invalid">
+                                    <span *ngIf="submitted && profileform.get('lastname')?.invalid && profileform.get('lastname')?.errors">
+                                      <small class="text-danger" *ngIf="profileform.get('lastname')?.hasError('required')">This field is required.</small>
+                                    </span>
+                                  </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                  <div class="form-group">
+                                    <label for="wnumber">Phone</label>
+                                    <input type="tel" formControlName="phone" class="form-control" id="wnumber" name="phone" [class.error-border]="submitted && profileform.get('phone')?.invalid">
+                                    <span *ngIf="submitted && profileform.get('phone')?.invalid && profileform.get('phone')?.errors">
+                                      <small class="text-danger" *ngIf="profileform.get('phone')?.hasError('required')">This field is required.</small>
+                                    </span>
+                                  </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                  <div class="form-group">
+                                    <label for="nic">Bio</label>
+                                    <input type="text" formControlName="bio" class="form-control" id="bio" name="bio" [class.error-border]="submitted && profileform.get('bio')?.invalid">
+                                    <span *ngIf="submitted && profileform.get('bio')?.invalid && profileform.get('bio')?.errors">
+                                      <small class="text-danger" *ngIf="profileform.get('bio')?.hasError('required')">This field is required.</small>
+                                    </span>
+                                  </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                  <div class="form-group">
+                                    <label for="email">E-mail</label>
+                                    <input type="email" formControlName="email" class="form-control" id="email" name="email">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row button--row justify-content-end">
+                                <div class="">
+                                  <button type="submit" class="btn btn-default" (click)="UpdateAccount()" [disabled]="LockSubmit"><i class="fas fa-spinner fa-pulse" [hidden]="LoadingStatus"></i> Update</button>
+                                </div>
+                                <div class="cancel">
+                                  <button type="button" class="btn btn-default" (click)="ResetForm()" >Clear</button>
+                                </div>
+                              </div>
+                              </div>
+                            </div>
+                        </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  envName: 'local',
+  //apiUrl: 'http://127.0.0.1:8000/api',
+  //ResUrl: 'http://127.0.0.1:8000',
+  logoUrl: '/assets/landing-page/logo.png',
+  footerUrl: '/assets/landing-page/logofooter.png',
+  backend_storage_access_url: 'http://localhost:8000',
+
+  apiUrl: 'http://127.0.0.1:8000/api',
+  ResUrl: 'http://127.0.0.1:8000',
+
 };
 
 /*

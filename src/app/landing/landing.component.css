@@ -1,0 +1,71 @@
+.success-stories {
+  height: 450px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-shadow: 3px 6px 20px rgba(0, 0, 0, 0.25);
+          box-shadow: 3px 6px 20px rgba(0, 0, 0, 0.25);
+  margin: 30px;
+}
+
+.success-stories .story-comma {
+  font-size: 3rem;
+  color: #FDB415;
+  position: absolute;
+  top: 10%;
+  left: 20%;
+}
+
+.success-stories .story-text {
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  right: 20%;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: -0.01em;
+  text-transform: capitalize;
+  font-size: 1.1rem;
+  color: #111;
+}
+
+.success-stories .story {
+  height: 150px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: 30px;
+  background-color: #111;
+}
+
+.success-stories .story img {
+  position: absolute;
+  bottom: 100px;
+  border-radius: 100px;
+  height: 100px;
+  width: 100px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -webkit-box-shadow: 3px 6px 30px rgba(0, 0, 0, 0.25);
+          box-shadow: 3px 6px 30px rgba(0, 0, 0, 0.25);
+}
+/*# sourceMappingURL=landing.component.css.map */

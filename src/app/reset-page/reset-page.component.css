@@ -1,0 +1,207 @@
+.reset {
+  height: 100vh;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.reset--contain {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  border-radius: 40px;
+  background-color: rgba(244, 243, 242, 0.94);
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-size: cover;
+  font-family: Poppins;
+  padding: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: auto;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 40%;
+  padding: 2%;
+}
+
+.reset--contain .reset--form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 40px;
+  text-align: center;
+}
+
+.reset--contain .reset--form form {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin: 0;
+}
+
+.reset--contain .reset--form form .form__header {
+  color: #000C8A;
+  font-size: 2.5rem;
+  font-weight: bold;
+  padding-bottom: 50%;
+}
+
+.reset--contain .reset--form form .form-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-bottom: 5%;
+}
+
+.reset--contain .reset--form form .form-group label {
+  font-size: 0.875rem;
+  line-height: 21px;
+  -ms-flex-item-align: start;
+  -ms-grid-row-align: start;
+  align-self: start;
+}
+
+.reset--contain .reset--form form .form-group input {
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.53);
+  color: #666666;
+  background-color: transparent;
+  height: 50%;
+  width: 400px;
+  text-align: left;
+}
+
+.reset--contain .reset--form form .form-group .form-control.ng-touched.ng-invalid {
+  border: 1px solid red;
+}
+
+.reset--contain .reset--form form .form-group .form-control.ng-touched.ng-valid {
+  border: 1px solid green;
+}
+
+.reset--contain .reset--form form .form-group .field-icon {
+  -ms-flex-item-align: end;
+  align-self: flex-end;
+  float: right;
+  margin-top: -25px;
+  margin-right: 7px;
+  position: relative;
+  cursor: pointer;
+  color: #666666;
+}
+
+.reset--contain .reset--form form .form-group .hide, .reset--contain .reset--form form .form-group .hide2 {
+  display: none;
+}
+
+.reset--contain .reset--form form button {
+  border-radius: 30px;
+  color: white;
+  border: 3px solid #000C8A;
+  padding: 7px 30px 7px 30px;
+  background-color: #000C8A;
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: center;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  cursor: pointer;
+  outline: none;
+}
+
+.reset--contain .reset--form form button:hover {
+  background-color: #4049A7;
+}
+
+@media screen and (max-width: 1199px) {
+  html, body {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  html, body {
+    font-size: 12px;
+  }
+  .reset--contain {
+    width: 70%;
+  }
+  .reset--contain .reset--form form .form-group {
+    padding-bottom: 5%;
+  }
+  .reset--contain .reset--form form .form-group input {
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.53);
+    color: #666666;
+    background-color: transparent;
+    height: 50%;
+    width: 300px;
+  }
+  .reset--contain .reset--form form .form-group .field-icon {
+    float: right;
+    margin-top: -20px;
+    margin-right: 5px;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  html, body {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  html, body {
+    font-size: 10px;
+  }
+  .reset--contain {
+    width: 80%;
+  }
+  .reset--contain .reset--form form .form-group {
+    padding-bottom: 5%;
+  }
+  .reset--contain .reset--form form .form-group input {
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.53);
+    color: #666666;
+    background-color: transparent;
+    height: 50%;
+    width: 230px;
+  }
+}
+/*# sourceMappingURL=reset-page.component.css.map */

@@ -1,0 +1,187 @@
+<div class="userdashboard--contain">
+  <div class="col-12 col-md right">
+    <div class="container-fluid">
+      <div class="file__upload__form" style="box-shadow: 3px 6px 50px rgb(0 0 0 / 9%)">
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="file__upload__header">
+              <div class="breadcrumbs">
+                  <div class="click--link--class"><a  href="administration/dashboard/clz-management">Add new Class</a></div>
+                  <div class="class--active class--active">View all Class</div>
+                  <div class="click--link class--active"><a href="administration/dashboard/clz-management/view-un-publish-all-clz">View Unpublish Class</a></div>
+              </div>
+              <div class="row col-12 justify-content-center">
+                <span class="error--display"></span>
+              </div>
+              <div class="col-12">
+                <div class="table--students">
+                    <form style="border: none;">
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <div class="p-0 m-0 pb-3" style="font-weight:bold; color: #666666;">All Class</div>
+                        </div>
+                        <div class="col-sm-6 pb-3">
+                          <input type="text" class="form-control" placeholder="search Class" name="searchClz" [(ngModel)]="searchClz">
+                        </div>
+                      </div>
+                    </form>
+                    <div class="row m-2">
+                      <table class="col-12">
+                        <tr class="header--table">
+                            <td>Class Name</td>
+                            <td>Teacher Info</td>
+                            <td>Year</td>
+                            <td>Grade</td>
+                            <td>Subject</td>
+                            <td>Fee</td>
+                            <td>Status</td>
+                            <td>Update</td>
+                        </tr>
+                        <tr *ngFor="let clz of clzInfo.data |filter:searchClz | paginate: { itemsPerPage: 10, currentPage: p  };">
+                            <td>{{ clz.clz_name }}</td>
+                            <td>{{ clz.teacher.firstname | titlecase }} {{  clz.teacher.lastname | titlecase }} {{  clz.teacher.phone  }}</td>
+                            <td>{{ clz.year }}</td>
+                            <ng-container *ngIf="clz.grade === '12';else second">
+                              <td>Grade 12</td>
+                            </ng-container>
+                            <ng-template #second>
+                              <ng-container *ngIf="clz.grade === '13'; ">
+                                <td>Grade 13</td>
+                              </ng-container>
+                            </ng-template>
+
+                            <ng-container *ngIf="clz.subject === '1';else f1">
+                              <td>Sinhala</td>
+                            </ng-container>
+
+                            <ng-template #f1>
+                              <ng-container *ngIf="clz.subject === '2'; else f2">
+                                <td>Buddhist Civilization</td>
+                              </ng-container>
+                            </ng-template>
+
+                            <ng-template #f2>
+                              <ng-container *ngIf="clz.subject === '3'; else f3">
+                                <td>Economics</td>
+                              </ng-container>
+                            </ng-template>
+                            <ng-template #f3>
+                              <ng-container *ngIf="clz.subject === '4'; else f4">
+                                <td>Dance</td>
+                              </ng-container>
+                            </ng-template>
+                            <ng-template #f4>
+                              <ng-container *ngIf="clz.subject === '5'; else f5">
+                                <td>English</td>
+                              </ng-container>
+                            </ng-template>
+                            <ng-template #f5>
+                              <ng-container *ngIf="clz.subject === '6'; else f6">
+                                <td>Communication & Media Studies</td>
+                              </ng-container>
+                            </ng-template>
+                            <ng-template #f6>
+                              <ng-container *ngIf="clz.subject === '7'; else f7">
+                                <td>Geography</td>
+                              </ng-container>
+                            </ng-template>
+                            <ng-template #f7>
+                              <ng-container *ngIf="clz.subject === '8'; else f8">
+                                <td>Logic and Scientific Method</td>
+                              </ng-container>
+                            </ng-template>
+                            <ng-template #f8>
+                              <ng-container *ngIf="clz.subject === '9'; else f9">
+                                <td>Music</td>
+                              </ng-container>
+                            </ng-template>
+                            <ng-template #f9>
+                              <ng-container *ngIf="clz.subject === '10'; else f10">
+                                <td>Tamil</td>
+                              </ng-container>
+                            </ng-template>
+                            <ng-template #f10>
+                              <ng-container *ngIf="clz.subject === '11'; else f11">
+                                <td>IT</td>
+                              </ng-container>
+                            </ng-template>
+                            <ng-template #f11>
+                              <ng-container *ngIf="clz.subject === '12'; else f12">
+                                <td>Mathematics</td>
+                              </ng-container>
+                            </ng-template>
+                            <ng-template #f12>
+                              <ng-container *ngIf="clz.subject === '13'; else f13">
+                                <td>Physics</td>
+                              </ng-container>
+                            </ng-template>
+                            <ng-template #f13>
+                              <ng-container *ngIf="clz.subject === '14'; else f14">
+                                <td>Chemistry</td>
+                              </ng-container>
+                            </ng-template>
+                            <ng-template #f14>
+                              <ng-container *ngIf="clz.subject === '15'; else f15">
+                                <td>Biology</td>
+                              </ng-container>
+                            </ng-template>
+                            <ng-template #f15>
+                              <ng-container *ngIf="clz.subject === '16'; else f16">
+                                <td>Agricultural Science</td>
+                              </ng-container>
+                            </ng-template>
+                            <ng-template #f16>
+                            <ng-container *ngIf="clz.subject === '17'; else f17">
+                                <td>Business Statistics</td>
+                              </ng-container>
+                            </ng-template>
+                            <ng-template #f17>
+                              <ng-container *ngIf="clz.subject === '18'; else f18">
+                                  <td>Accounting</td>
+                                </ng-container>
+                            </ng-template>
+                            <ng-template #f18>
+                              <ng-container *ngIf="clz.subject === '19'; else f19">
+                                  <td>Engineering Technology</td>
+                                </ng-container>
+                            </ng-template>
+                            <ng-template #f19>
+                              <ng-container *ngIf="clz.subject === '20';">
+                                  <td>Bio-system Technology</td>
+                                </ng-container>
+                            </ng-template>
+                            <ng-template #f20>
+                              <ng-container *ngIf="clz.subject === '21'; else f21">
+                                  <td>Science for Technology</td>
+                                </ng-container>
+                            </ng-template>
+                            <ng-template #f21>
+                              <ng-container *ngIf="clz.subject === '22';">
+                                  <td>Political Science</td>
+                                </ng-container>
+                            </ng-template>
+                            <td>{{ clz.fee }}</td>
+                            <ng-container *ngIf="clz.status === 1;else elseblock">
+                              <td><button class="bg-white p-2" (click)="changeStatus(clz.id,clz.status)">Publish</button></td>
+                            </ng-container>
+                            <ng-template #elseblock>
+                              <ng-container *ngIf="clz.status === 0;">
+                                <td><button class="bg-white p-2" (click)="changeStatus(clz.id,clz.status)">UnPublish</button></td>
+                              </ng-container>
+                            </ng-template>
+                            <td><a  title="edit" [routerLink]="['edit-clz',clz.id]"><i class="far fa-edit edit"></i></a></td>
+                        </tr>
+                    </table>
+                    </div>
+                </div>
+            </div>
+            <ul class="pagination justify-content-center">
+                <pagination-controls class="my-pagination"></pagination-controls>
+            </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

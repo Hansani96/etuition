@@ -1,0 +1,89 @@
+<div class="userdashboard--contain">
+  <div class="col-12 col-md right" style="background-color: white;">
+    <div class="container-fluid">
+      <div class="file__upload__form">
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="breadcrumbs">
+              <div class="class--active">Post a News</div>
+              <div class="click--link"><a [routerLink]="['view-all-news']">View All News</a></div>
+           </div>
+          </div>
+        </div>
+        <form action=""  [formGroup]="newsform" (ngSubmit)="submitMaterials()">
+          <div *ngIf="upalod_status_message.status=='1'; else elseBlock">
+            <li class=" lstyle" style="color:green" role="alert">{{ upalod_status_message.message }}</li>
+          </div>
+          <ng-template #elseBlock><li class=" lstyle" style="color:green" role="alert">{{ upalod_status_message.message }}</li> </ng-template>
+
+          <li class=" lstyle" style="color:green" role="alert">{{ uplaod_pro }}</li>
+
+          <div class="row">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+              <div class="upload--file--text">Upload Banner</div>
+              <li class=" lstyle" style="color:red" role="alert">{{ file_errors}}</li>
+              <div class="upload--icon--text">
+                <div class="upload--icon"><img src="./styles/images/Group 194.png" alt=""></div>
+                <div class="drag--and--drop"><input type="file" class="form-control-file "  formControlName="news_banner" (change)="onfileSelected($event)" id="inputFile" accept="image/*"  data-title="Select File" accept=".jpg,.jpeg">{{ selectedFileName }}
+
+                </div>
+
+              </div>
+            </div>
+           <span class="text-mute" *ngIf="!newsform.controls['news_banner'].valid && newsform.controls['news_banner']?.touched"> Please enter a File</span>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6" >
+              <div class="form-row">
+                <div class="col-12">
+                  <div class="form-group">
+                    <label for="fname">News Topic</label>
+                    <input type="text" class="form-control input--text--color" id="fname" formControlName="head_line" required>
+                    <span class="text-mute" *ngIf="!newsform.controls['head_line'].valid && newsform.controls['head_line']?.touched">News Topic Required</span>
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-12">
+                  <div class="form-group">
+                    <label for="fname">News Category</label>
+                    <select formControlName="news_cat" id="cat" class="form-control ">
+                      <option  selected disabled >Select Here</option>
+                      <option value="1">Educational Administration</option>
+                      <option value="2">Educational Policy</option>
+                      <option value="3">Educational Research</option>
+                      <option value="4">Educational Exams</option>
+                      <option value="5">Educational Events</option>
+                      a<option value="6">School Events</option>
+                      <option value="7">Other</option>
+                    </select>
+                    <span class="text-mute" *ngIf="!newsform.controls['news_cat'].valid && newsform.controls['news_cat']?.touched"> Please select Category </span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="col-12 ">
+                  <div class="form-group">
+                    <label for="fname">News Description</label>
+
+                    <textarea name="" class="form-control input--text--color " id="" cols="30" rows="4" placeholder="Enter your news descreption here" formControlName="des" name="message"></textarea>
+                    <span class="text-mute" *ngIf="!newsform.controls['des'].valid && newsform.controls['des']?.touched"> Please enter news 0 description</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-12 col-lg-12 col-sm-12 ">
+                <div class="row justify-content-end">
+                  <div *ngIf="disable_file_uplaod_button">
+                    <div class="upload--button" >
+                      <button type="submit" class="btn btn-default" [disabled]="!newsform.valid">Publish News</button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

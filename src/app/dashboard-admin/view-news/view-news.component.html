@@ -1,0 +1,96 @@
+<div class="userdashboard--contain">
+  <div class="col-12 col-md right">
+    <div class="container-fluid">
+      <div class="file__upload__form" style="box-shadow: 3px 6px 50px rgb(0 0 0 / 9%)">
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="file__upload__header">
+              <div class="breadcrumbs">
+                  <div class="click--link--class"><a  href="administration/dashboard/news-management">Post a News</a></div>
+                  <div class="class--active">View all News</div>
+              </div>
+              <div class="row col-12 justify-content-center">
+                <span class="error--display"></span>
+              </div>
+              <div class="col-12">
+                <div class="table--students">
+                    <form style="border: none;">
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <div class="p-0 m-0 pb-3" style="font-weight:bold; color: #666666;">All News</div>
+                        </div>
+                        <div class="col-sm-6 pb-3">
+                          <input type="text" class="form-control" placeholder="search News" name="searchClz" [(ngModel)]="searchClz">
+                        </div>
+                      </div>
+                    </form>
+                    <div class="row m-2">
+                      <table class="col-12">
+                        <tr class="header--table">
+                            <td>News Headline</td>
+                            <td>News Category</td>
+                            <td>Status</td>
+                            <td>Update</td>
+                        </tr>
+                        <tr *ngFor="let news of newsInfo.data |filter:searchClz | paginate: { itemsPerPage: 10, currentPage: p  };">
+                            <td>{{ news.head_line }}</td>
+                            <ng-container *ngIf="news.news_cat === '1';else second">
+                              <td>Educational Administration</td>
+                            </ng-container>
+                            <ng-template #second>
+                              <ng-container *ngIf="news.news_cat === '2';else fourth ">
+                                <td>Educational Policy</td>
+                              </ng-container>
+                            </ng-template>
+                            <ng-template #fourth>
+                              <ng-container *ngIf="news.news_cat === '3';else five ">
+                                <td>Educational Research</td>
+                              </ng-container>
+                            </ng-template>
+                            <ng-template #five>
+                              <ng-container *ngIf="news.news_cat === '4';else six ">
+                                <td>Educational Exams</td>
+                              </ng-container>
+                            </ng-template>
+                            <ng-template #six>
+                              <ng-container *ngIf="news.news_cat === '5';else seven ">
+                                <td>Educational Events</td>
+                              </ng-container>
+                            </ng-template>
+                            <ng-template #seven>
+                              <ng-container *ngIf="news.news_cat === '6';else ehight ">
+                                <td>School Events</td>
+                              </ng-container>
+                            </ng-template>
+                            <ng-template #ehight>
+                              <ng-container *ngIf="news.news_cat === '7';">
+                                <td>Other</td>
+                              </ng-container>
+                            </ng-template>
+
+                            <ng-container *ngIf="news.is_publish === 1;else elseblock">
+                              <td><button class="bg-white p-2" (click)="changeStatus(news.id,news.is_publish)">Publish</button></td>
+                            </ng-container>
+                            <ng-template #elseblock>
+                              <ng-container *ngIf="news.is_publish === 0;">
+                                <td><button class="bg-white p-2" (click)="changeStatus(news.id,news.is_publish)">UnPublish</button></td>
+                              </ng-container>
+                            </ng-template>
+
+                            <td><a  title="edit" [routerLink]="['edit-news',news.id]"><i class="far fa-edit edit"></i></a></td>
+                        </tr>
+
+                    </table>
+                    </div>
+                </div>
+            </div>
+            <ul class="pagination justify-content-center">
+                <pagination-controls class="my-pagination"></pagination-controls>
+            </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
