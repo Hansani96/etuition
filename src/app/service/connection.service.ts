@@ -4,7 +4,7 @@ import { Data, Router } from '@angular/router';
 import { throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-
+import Swal from 'sweetalert2';
 @Injectable({
   providedIn: 'root'
 })
@@ -16,14 +16,26 @@ export class ConnectionService {
 
   // Error Handling Function [Server Response Error]
   handleError(error: HttpErrorResponse) {
+
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.
       console.error('An error occurred:', error.error);
+
+    } else if(error.status === 401) {
+
+      console.error(`Backend returned code ${error.status}, body was: `, error.error);
+      Swal.fire({
+        text: "Same account logged in from a different device. You can log in from only one device at a time.",
+        icon: 'error',
+        showCancelButton: false,
+        confirmButtonColor: '#f56036',
+        confirmButtonText: 'Leave',
+        allowOutsideClick: false,
+      }).then((result) => { if (result.isConfirmed) { localStorage.removeItem('token'); window.location.href = ''; } });
+
     } else {
-      // The backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong.
-    console.error(
-      `Backend returned code ${error.status}, body was: `, error.error);
+
+      console.error(`Backend returned code ${error.status}, body was: `, error.error);
     }
     // Return an observable with a user-facing error message.
     return throwError(
@@ -31,7 +43,7 @@ export class ConnectionService {
   }
 
   // ! Change the Environment configuration ! //
-  
+
   // Get request - Get All Data ....
   getData(configUrl: string) {
     return this.http.get(this.EnvUrl+configUrl)
